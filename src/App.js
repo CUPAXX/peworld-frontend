@@ -12,6 +12,7 @@ import LandingPages from './page/LandingPages'
 import Login from './page/Login'
 import PickerRegister from './page/PickerRegister'
 import EditProfileTalent from './page/EditProfileTalent';
+import Home from './page/Home'
 
 function App () {
   return (
@@ -25,7 +26,7 @@ function App () {
           <Route path="/picker" component={PickerRegister} />
           <Route path="/landingPages" component={LandingPages} />
           <Route path="/EditProfileTalent" component={EditProfileTalent} />
-
+          <Route path="/home" component={Home} />
           <Route path="/profile/talent" component={ProfileTalent} />
           <Route path="/hire" component={Hire} />
 

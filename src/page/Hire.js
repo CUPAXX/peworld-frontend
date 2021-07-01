@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import picProfile from '../bg/profile.png'
 import Footer from '../components/Footer'
+import Navbar from '../components/Navbar'
 
 class Hire extends Component {
   render () {
     return (
       <React.Fragment>
+        <Navbar/>
         <section>
         <div className="flex mt-14 mx-32 mb-64">
             <div>
