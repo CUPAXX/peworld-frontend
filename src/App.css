@@ -18,3 +18,26 @@ body {
   width: 100%;
   background-size: cover;
 }
+
+.login, .picker{
+  font-family: 'Open Sans', sans-serif;
+}
+
+.purple{
+  background-color: #5E50A1;
+  ;
+}
+
+.bg-image{
+  background-image: url(./bg/loginbg.png) ;
+  width: 60%;
+  height: 800px;
+  background-size: cover;
+}
+
+.bg-coloring{
+  background: rgba(94, 80, 161,0.82);
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+}
