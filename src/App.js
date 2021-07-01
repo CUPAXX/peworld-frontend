@@ -12,7 +12,12 @@ import LandingPages from './page/LandingPages'
 import Login from './page/Login'
 import PickerRegister from './page/PickerRegister'
 import EditProfileTalent from './page/EditProfileTalent';
+<<<<<<< HEAD
 import Home from './page/Home'
+=======
+import ForgotPassword from './page/ForgotPassword';
+import ConfirmPassword from './page/ConfirmPassword'
+>>>>>>> sandi2
 
 function App () {
   return (
@@ -29,6 +34,8 @@ function App () {
           <Route path="/home" component={Home} />
           <Route path="/profile/talent" component={ProfileTalent} />
           <Route path="/hire" component={Hire} />
+          <Route path="/forgotPassword" exact component={ForgotPassword} />
+          <Route path="/forgotPassword/confirm" component={ConfirmPassword} />
 
         </Switch>
       </BrowserRouter>
