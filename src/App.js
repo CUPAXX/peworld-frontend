@@ -12,12 +12,10 @@ import LandingPages from './page/LandingPages'
 import Login from './page/Login'
 import PickerRegister from './page/PickerRegister'
 import EditProfileTalent from './page/EditProfileTalent';
-<<<<<<< HEAD
+
 import Home from './page/Home'
-=======
 import ForgotPassword from './page/ForgotPassword';
 import ConfirmPassword from './page/ConfirmPassword'
->>>>>>> sandi2
 
 function App () {
   return (
