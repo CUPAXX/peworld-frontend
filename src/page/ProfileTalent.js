@@ -4,11 +4,13 @@ import { Link } from 'react-router-dom';
 import Footer from '../components/Footer'
 import Portofolio from '../components/portofolio'
 import Experience from '../components/Experience'
+import Navbar from '../components/Navbar'
 
 class ProfileTalent extends Component {
   render () {
     return (
       <React.Fragment>
+        <Navbar/>
         <section className="z-0">
           <div className="w-full h-72 bg-purple-700"></div>
           <div className="flex z-2 -mt-56 mx-32 mb-64">

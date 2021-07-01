@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import picProfile from '../bg/profile.png'
 import Footer from '../components/Footer'
+import Navbar from '../components/Navbar'
 
 class ProfileRecruiter extends Component {
   render () {
     return (
       <React.Fragment>
+        <Navbar/>
         <section className="flex w-full h-full bg-gray-100 justify-center">
           <div className="flex flex-1 flex-col mt-10 mb-40 mx-20 bg-white">
             <div className="bg-purple-700 h-40 w-full rounded-t-xl">

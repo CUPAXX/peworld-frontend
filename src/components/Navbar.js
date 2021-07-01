@@ -3,8 +3,8 @@ import React, { Component } from 'react'
 export default class Navbar extends Component {
   render () {
     return (
-      <nav>
-            <div className="flex flex-row pl-36 pr-36 pt-8 justify-between">
+      <nav className="bg-white">
+            <div className="flex flex-row mx-28 py-6 justify-between">
 
             <div className="flex flex-row space-x-24 font-semibold">
               <div><img className="" src="/assets/logo2.png" alt="logo"></img></div>
