@@ -14,13 +14,24 @@ class Home extends Component {
 
           <div className="flex flex-col mx-28 my-10">
 
-            <input className="text-sm py-5 text-gray-500 px-4 z-1 rounded-md" placeholder="Search for any skill"/>
-            <i className="fa fa-search z-2 -mt-11 self-end mr-10 text-xl text-gray-600"></i>
-            {/* <select className="py-5 px-4 text-gray-500 bg-white text-sm z-2 relative w-32 self-end border-l-2 border-gray-500 mr-10" style={{ margin: '-60px' }}>
-                <option value="Project">Project</option>
-                <option value="Employee">Employee</option>
-            </select>
-            <button className="bg-purple-700 relative z-3 w-32 py-3 text-white rounded-md mt-1 self-end">Search</button> */}
+            <div className=" flex flex-row items-center bg-white px-2">
+              <div className="w-full">
+              <input className="text-sm py-5 text-gray-500 w-full px-4 z-1 rounded-md" placeholder="Search for any skill"/>
+              </div>
+
+              <div>
+              <i className="fa fa-search z-2 self-end mr-10 text-xl text-gray-600"></i>
+              </div>
+              <div>
+                <select className="border-l-2 border-gray-500 mr-10 py-3 px-4 text-gray-500 bg-white text-sm">
+                  <option value="Sort">Sort</option>
+                  <option value="Sort By Name">Select By Name</option>
+                </select>
+              </div>
+              <div className="flex items-center">
+              <button className="bg-purple-700 relative z-3 w-32 py-3 text-white rounded-md  self-end">Search</button>
+              </div>
+            </div>
 
             <div className="flex flex-col bg-white mt-14">
 
