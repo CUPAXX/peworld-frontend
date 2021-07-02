@@ -12,7 +12,11 @@ import LandingPages from './page/LandingPages'
 import Login from './page/Login'
 import PickerRegister from './page/PickerRegister'
 import EditProfileTalent from './page/EditProfileTalent';
+import EditProfileRecruiter from './page/EditProfileRecruiter';
+
 import Home from './page/Home'
+import ForgotPassword from './page/ForgotPassword';
+import ConfirmPassword from './page/ConfirmPassword'
 
 function App () {
   return (
@@ -25,10 +29,13 @@ function App () {
           <Route path="/login" exact component={Login} />
           <Route path="/picker" component={PickerRegister} />
           <Route path="/landingPages" component={LandingPages} />
-          <Route path="/EditProfileTalent" component={EditProfileTalent} />
+          <Route path="/editProfileTalent" component={EditProfileTalent} />
+          <Route path="/editProfileRecruiter" component={EditProfileRecruiter} />
           <Route path="/home" component={Home} />
           <Route path="/profile/talent" component={ProfileTalent} />
           <Route path="/hire" component={Hire} />
+          <Route path="/forgotPassword" exact component={ForgotPassword} />
+          <Route path="/forgotPassword/confirm" component={ConfirmPassword} />
 
         </Switch>
       </BrowserRouter>
