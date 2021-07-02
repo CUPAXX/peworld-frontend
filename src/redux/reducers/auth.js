@@ -1,7 +1,9 @@
 const initialState = {
   token: null,
   userData: [],
-  errMsg: ''
+  msg: '',
+  errMsg: '',
+  registered: ''
 }
 
 const auth = (state = initialState, action) => {
@@ -11,10 +13,25 @@ const auth = (state = initialState, action) => {
         ...state,
         token: action.payload.token,
         userData: action.payload.userData,
+        msg: 'success',
         errMsg: ''
       }
     }
     case 'AUTH_LOGIN_FAILED': {
+      return {
+        ...state,
+        errMsg: action.payload
+      }
+    }
+    case 'AUTH_REGISTER_TALENT': {
+      return {
+        ...state,
+        registered: action.payload,
+        msg: 'success',
+        errMsg: ''
+      }
+    }
+    case 'AUTH_REGISTER_TALENT_FAILED': {
       return {
         ...state,
         errMsg: action.payload

@@ -35,6 +35,13 @@ class Login extends Component {
     })
   }
 
+  componentDidUpdate () {
+    const { msg } = this.props.auth
+    if (msg !== '') {
+      this.props.history.push('/home')
+    }
+  }
+
   render () {
     // console.log(this.props.auth)
     return (
