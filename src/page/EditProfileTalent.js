@@ -76,7 +76,7 @@ class EditProfileTalent extends Component {
             </div>
 
                 <div className="pt-8">
-                  <button className="bg-white text-yellow-500 font-semibold py-3 hover:bg-yellow-200 border  border-yellow-500 rounded-sm  w-full rounded-md">Tambah pengalaman kerja</button>
+                  <button className="bg-white text-yellow-500 font-semibold py-3 hover:bg-yellow-200 border  border-yellow-500  w-full rounded-md">Tambah pengalaman kerja</button>
                 </div>
 
           </div>
@@ -115,7 +115,7 @@ class EditProfileTalent extends Component {
             </div>
 
                 <div className="pt-8">
-                  <button className="bg-white text-yellow-500 font-semibold py-3 hover:bg-yellow-200 border  border-yellow-500 rounded-sm  w-full rounded-md">Tambah portofolio</button>
+                  <button className="bg-white text-yellow-500 font-semibold py-3 hover:bg-yellow-200 border  border-yellow-500   w-full rounded-md">Tambah portofolio</button>
                 </div>
 
           </div>

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import picProfile from '../bg/profile.png'
 import Navbar from '../components/Navbar'
+import { Link } from 'react-router-dom'
 
 class Home extends Component {
   render () {
@@ -50,7 +51,7 @@ class Home extends Component {
                   </div>
                 </div>
                 <div className="flex">
-                  <button className="text-white bg-purple-700 py-3 px-6 rounded-sm mr-16">Lihat Profile</button>
+                  <Link to="/profile/talent"><button className="text-white bg-purple-700 py-3 px-6 rounded-sm mr-16">Lihat Profile</button></Link>
                 </div>
               </div>
 

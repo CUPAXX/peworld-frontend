@@ -22,13 +22,14 @@ function App () {
   return (
     <BrowserRouter>
         <Switch>
-          <Route path="/" exact component={RegisterTalent} />
-          <Route path="/recruiter" component={RegisterRecruiter} />
+          <Route path="/" exact component={LandingPages} />
+          <Route path="/register/talent" component={RegisterTalent} />
+          <Route path="/register/recruiter" component={RegisterRecruiter} />
           <Route path="/profile/recruiter" component={ProfileRecruiter} />
 
-          <Route path="/login" exact component={Login} />
-          <Route path="/picker" component={PickerRegister} />
-          <Route path="/landingPages" component={LandingPages} />
+          <Route path="/login" component={Login} />
+          <Route path="/register" exact component={PickerRegister} />
+
           <Route path="/editProfileTalent" component={EditProfileTalent} />
           <Route path="/editProfileRecruiter" component={EditProfileRecruiter} />
           <Route path="/home" component={Home} />

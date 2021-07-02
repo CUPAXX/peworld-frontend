@@ -3,6 +3,7 @@ import ImgMix from '../components/ImgMix'
 import Halo from '../components/Halo'
 import ButtonLogin from '../components/ButtonLogin'
 import '../App.css'
+import { Link } from 'react-router-dom'
 
 import { connect } from 'react-redux'
 import { authLogin } from '../redux/actions/auth'
@@ -52,7 +53,7 @@ class Login extends Component {
             <label className="text-gray-500 text-sm pt-8" >Kata Sandi</label>
             <input onChange={this.changePassword} value={this.state.password} className="border border-gray-400 py-3 px-3 rounded text-gray-600 text-sm" type="password" placeholder="Masukan kata sandi" />
 
-            <div className="pt-3 pb-6 text-right" >Lupa kata sandi?</div>
+            <Link to="/forgotPassword" className="pt-3 pb-6 text-right" >Lupa kata sandi?</Link>
 
             <ButtonLogin />
           </form>

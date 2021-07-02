@@ -22,7 +22,7 @@ class ProfileTalent extends Component {
               <h2 className="text-sm text-gray-500 pb-3"><i className="fa fa-map-marker pr-2 text-lg"></i>Purwokerto, Jawa Tengah</h2>
               <h2 className="text-sm text-gray-500 pb-3">Freelancer</h2>
               <p className="w-72 text-sm text-gray-500 pb-8">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum erat orci, mollis nec gravida sed, ornare quis urna. Curabitur eu lacus fringilla, vestibulum risus at.</p>
-              <button className="bg-purple-700 text-white font-semibold py-3 rounded-sm mb-8">Hire</button>
+              <Link to="/hire"><button className="bg-purple-700 text-white font-semibold py-3 w-full rounded-sm mb-8">Hire</button></Link>
               <h2 className="font-semibold text-lg pb-5">Skill</h2>
               <div className="flex flex-row space-x-3 pb-4">
                 <button className="text-sm bg-yellow-400 text-white border border-yellow-600 rounded-sm py-1 px-4">Python</button>

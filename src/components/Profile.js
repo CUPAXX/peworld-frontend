@@ -16,8 +16,8 @@ export default class Profile extends Component {
       </div>
 
       <div className="my-8">
-      <button className="bg-purple-700 text-white font-semibold py-3 hover:bg-purple-500 rounded-sm mb-4 w-full rounded-md ">Simpan</button>
-      <button className="bg-white text-purple-700 font-semibold py-3 hover:bg-purple-200 border  border-purple-500 rounded-sm  w-full rounded-md">Batal</button>
+      <button className="bg-purple-700 text-white font-semibold py-3 hover:bg-purple-500  mb-4 w-full rounded-md ">Simpan</button>
+      <button className="bg-white text-purple-700 font-semibold py-3 hover:bg-purple-200 border  border-purple-500   w-full rounded-md">Batal</button>
       </div>
 
       </div>

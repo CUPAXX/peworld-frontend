@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import logo from '../bg/logowhite.png'
+import { Link } from 'react-router-dom'
 
 class Footer extends Component {
   render () {
@@ -7,7 +8,7 @@ class Footer extends Component {
       <React.Fragment>
         <footer className="bg-purple-700 w-full h-72">
           <div className="flex flex-col mx-28 pt-12 border-b">
-            <img className="w-28 h-8" src={logo}></img>
+            <Link to="/" ><img className="w-28 h-8" src={logo}></img></Link>
             <h2 className="text-white w-72 text-sm mt-6 mb-12">Lorem ipsum dolor sit amet, consectetur adipiscing elit. In euismod ipsum et dui rhoncus auctor.</h2>
           </div>
           <div className="flex flex-row mx-28 justify-between mt-6">
