@@ -53,14 +53,17 @@ class RegisterTalent extends Component {
       ...this.state
     }
     this.props.authRegisterTalent(data)
+      .then(() => {
+        this.props.history.push('/login')
+      })
   }
 
-  componentDidUpdate () {
-    const { msg } = this.props.auth
-    if (msg !== '') {
-      this.props.history.push('/login')
-    }
-  }
+  // componentDidUpdate () {
+  //   const { msg } = this.props.auth
+  //   if (msg !== '') {
+  //     this.props.history.push('/login')
+  //   }
+  // }
 
   render () {
     const { fullName, email, phoneNumber, password, confirmPassword } = this.state
@@ -83,7 +86,5 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = {
   authRegisterTalent
 }
-
-// export default Signup
 
 export default connect(mapStateToProps, mapDispatchToProps)(RegisterTalent)

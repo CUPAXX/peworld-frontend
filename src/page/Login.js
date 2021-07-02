@@ -37,13 +37,12 @@ class Login extends Component {
 
   componentDidUpdate () {
     const { msg } = this.props.auth
-    if (msg !== '') {
+    if (msg === 'success login!') {
       this.props.history.push('/home')
     }
   }
 
   render () {
-    // console.log(this.props.auth)
     return (
       <div className="login flex flex-row pt-12 pb-12 bg-gray-100">
 
@@ -65,7 +64,7 @@ class Login extends Component {
             <ButtonLogin />
           </form>
 
-          <div className="pt-6 text-center" >Anda belum punya akun? <span className="text-yellow-500"> Daftar disini </span>
+          <div className="pt-6 text-center" >Anda belum punya akun? <span className="text-yellow-500"><Link to="/register"> Daftar disini </Link></span>
           </div>
 
         </div>

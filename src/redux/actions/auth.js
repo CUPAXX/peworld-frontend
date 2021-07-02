@@ -30,9 +30,35 @@ export const authRegisterTalent = (data) => {
     form.append('phone_number', data.phoneNumber)
     form.append('password', data.password)
     form.append('confirm_password', data.confirmPassword)
-    console.log(form.toString());
     try {
       const { data } = await http().post(`${URL}/auth/register`, form.toString())
+      dispatch({
+        type: 'AUTH_REGISTER_TALENT',
+        payload: data.data.registered
+      })
+    } catch (err) {
+      dispatch({
+        type: 'AUTH_REGISTER_TALENT_FAILED',
+        payload: err.response.data.data
+      })
+    }
+  }
+}
+
+export const authRegisterRecruiter = (data) => {
+  return async (dispatch) => {
+    const form = new URLSearchParams()
+    form.append('full_name', data.fullName)
+    form.append('Email', data.email)
+    form.append('phone_number', data.phoneNumber)
+    form.append('password', data.password)
+    form.append('confirm_password', data.confirmPassword)
+    form.append('company', data.company)
+    form.append('sector', data.sector)
+    console.log(data);
+    console.log(form.toString());
+    try {
+      const { data } = await http().post(`${URL}/auth/register/recruiter`, form.toString())
       dispatch({
         type: 'AUTH_REGISTER_TALENT',
         payload: data.data.registered
