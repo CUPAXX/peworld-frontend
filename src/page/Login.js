@@ -52,14 +52,6 @@ class Login extends Component {
         <div className="flex flex-col pl-12 pr-12">
 
           <Halo />
-          {/* {msg !== ''
-            ? msg !== 'success login!' && <div className='bg-red-300 text-red-600 font-bold w-full mb-5 px-2 py-5'>{msg}</div>
-            : msg === 'success register talent!'
-              ? <div className='bg-green-300 text-green-600 font-bold w-full mb-5 px-2 py-5'>{msg}</div>
-              : msg === 'success register recruiter!'
-                ? <div className='bg-green-300 text-green-600 font-bold w-full mb-5 px-2 py-5'>{msg}</div>
-                : <></>
-          } */}
           {msg !== ''
             ? msg === 'success register talent!'
               ? <div className='bg-green-300 text-green-600 font-bold w-full mb-5 px-2 py-5'>{msg}</div>
