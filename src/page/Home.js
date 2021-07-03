@@ -1,11 +1,18 @@
-import React, { Component } from 'react';
+import React, { useEffect } from 'react';
 import picProfile from '../bg/profile.png'
 import Navbar from '../components/Navbar'
 import { Link } from 'react-router-dom'
+import { connect } from 'react-redux';
+import { getTalent } from './../redux/actions/talent';
 
-class Home extends Component {
-  render () {
-    return (
+const Home = (props) => {
+  useEffect(() => {
+    getTalent()
+  }, [])
+
+  console.log(props)
+
+  return (
       <React.Fragment>
         <Navbar history={this.props.history}/>
         <section>
@@ -55,61 +62,26 @@ class Home extends Component {
                 </div>
               </div>
 
-              <div className="flex flex-row items-center border-b-2 py-5">
-                <div className="mx-5 mb-3">
-                  <img className="w-28 h-28" src={picProfile}></img>
-                </div>
-                <div className="flex flex-col flex-1">
-                  <h2 className="font-semibold text-2xl">Louis Tomlinson</h2>
-                  <h2 className="text-gray-500 pt-2">Web developer</h2>
-                  <h2 className="text-gray-500 pt-1"><i className="fa fa-map-marker pr-2 text-2xl"></i>Lorem ipsum</h2>
-                  <div className="flex flex-row space-x-3 pt-4 pb-5">
-                    <button className="text-sm bg-yellow-400 text-white border border-yellow-600 rounded-sm py-1 px-4">Python</button>
-                    <button className="text-sm bg-yellow-400 text-white border border-yellow-600 rounded-sm py-1 px-4">Laravel</button>
-                    <button className="text-sm bg-yellow-400 text-white border border-yellow-600 rounded-sm py-1 px-4">Golang</button>
-                  </div>
-                </div>
-                <div className="flex">
-                  <button className="text-white bg-purple-700 py-3 px-6 rounded-sm mr-16">Lihat Profile</button>
-                </div>
-              </div>
-
-              <div className="flex flex-row items-center border-b-2 py-5">
-                <div className="mx-5 mb-3">
-                  <img className="w-28 h-28" src={picProfile}></img>
-                </div>
-                <div className="flex flex-col flex-1">
-                  <h2 className="font-semibold text-2xl">Louis Tomlinson</h2>
-                  <h2 className="text-gray-500 pt-2">Web developer</h2>
-                  <h2 className="text-gray-500 pt-1"><i className="fa fa-map-marker pr-2 text-2xl"></i>Lorem ipsum</h2>
-                  <div className="flex flex-row space-x-3 pt-4 pb-5">
-                    <button className="text-sm bg-yellow-400 text-white border border-yellow-600 rounded-sm py-1 px-4">Python</button>
-                    <button className="text-sm bg-yellow-400 text-white border border-yellow-600 rounded-sm py-1 px-4">Laravel</button>
-                    <button className="text-sm bg-yellow-400 text-white border border-yellow-600 rounded-sm py-1 px-4">Golang</button>
-                  </div>
-                </div>
-                <div className="flex">
-                  <button className="text-white bg-purple-700 py-3 px-6 rounded-sm mr-16">Lihat Profile</button>
-                </div>
-              </div>
-
             </div>
           </div>
 
           <div className="flex flex-row justify-center mb-16 space-x-3">
-            <div className="bg-white w-12 h-12 flex justify-center items-center border-2 border-gray-300 rounded-sm"><i className="fa fa-angle-left text-3xl font-medium text-gray-400"></i></div>
-            <div className="bg-white w-12 h-12 flex justify-center items-center border-2 border-gray-300 rounded-sm font-bold text-gray-400">1</div>
-            <div className="bg-white w-12 h-12 flex justify-center items-center border-2 border-gray-300 rounded-sm font-bold text-gray-400">2</div>
-            <div className="bg-white w-12 h-12 flex justify-center items-center border-2 border-gray-300 rounded-sm font-bold text-gray-400">3</div>
-            <div className="bg-white w-12 h-12 flex justify-center items-center border-2 border-gray-300 rounded-sm font-bold text-gray-400">4</div>
-            <div className="bg-white w-12 h-12 flex justify-center items-center border-2 border-gray-300 rounded-sm font-bold text-gray-400">5</div>
-            <div className="bg-white w-12 h-12 flex justify-center items-center border-2 border-gray-300 rounded-sm font-bold text-gray-400">6</div>
-            <div className="bg-white w-12 h-12 flex justify-center items-center border-2 border-gray-300 rounded-sm"><i className="fa fa-angle-right text-3xl font-medium text-gray-400"></i></div>
+            <button className="bg-white w-12 h-12 flex justify-center items-center border-2 border-gray-300 rounded-sm"><i className="fa fa-angle-left text-3xl font-medium text-gray-400"></i></button>
+            <button className="bg-white w-12 h-12 flex justify-center items-center border-2 border-gray-300 rounded-sm font-bold text-gray-400">1</button>
+            <button className="bg-white w-12 h-12 flex justify-center items-center border-2 border-gray-300 rounded-sm"><i className="fa fa-angle-right text-3xl font-medium text-gray-400"></i></button>
           </div>
         </section>
       </React.Fragment>
-    );
-  }
+  );
 }
 
-export default Home;
+const mapStateToProps = (state) => ({
+  talent: state.talent
+});
+
+const mapDispatchToProps = { getTalent }
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Home);

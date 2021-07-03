@@ -33,8 +33,8 @@ function App () {
           <Route path="/editProfileTalent" component={EditProfileTalent} />
           <Route path="/editProfileRecruiter" component={EditProfileRecruiter} />
           <Route path="/home" component={Home} />
-          <Route path="/profile/talent" component={ProfileTalent} />
-          <Route path="/hire" component={Hire} />
+          <Route path="/profile/talent/:id" component={ProfileTalent} />
+          <Route path="/hire/:id" component={Hire} />
           <Route path="/forgotPassword" exact component={ForgotPassword} />
           <Route path="/forgotPassword/confirm" component={ConfirmPassword} />
 

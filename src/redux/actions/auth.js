@@ -55,8 +55,7 @@ export const authRegisterRecruiter = (data) => {
     form.append('confirm_password', data.confirmPassword)
     form.append('company', data.company)
     form.append('sector', data.sector)
-    console.log(data);
-    console.log(form.toString());
+
     try {
       const { data } = await http().post(`${URL}/auth/register/recruiter`, form.toString())
       dispatch({
@@ -64,6 +63,7 @@ export const authRegisterRecruiter = (data) => {
         payload: data.data.registered
       })
     } catch (err) {
+      console.log(err.response)
       dispatch({
         type: 'AUTH_REGISTER_RECRUITER_FAILED',
         payload: err.response.data.data
