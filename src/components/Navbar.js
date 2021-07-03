@@ -41,7 +41,7 @@ class Navbar extends Component {
             <div className="flex flex-row mx-28 py-6 justify-between">
 
             <div className=" font-semibold">
-              <img className="" src="/assets/logo2.png" alt="logo"></img>
+              <Link to="/home"><img className="" src="/assets/logo2.png" alt="logo"></img></Link>
             </div>
 
             <div className="space-x-4">
