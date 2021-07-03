@@ -6,8 +6,10 @@ import talentProfile from './profileTalent';
 import skills from './skills'
 import experience from './getExperience';
 import portofolio from './getPortofolio'
+import recruiter from './recruiter'
 import { persistReducer } from 'redux-persist'
 import storage from 'redux-persist/lib/storage'
+import talent from './talent';
 
 const persistAuth = {
   storage,
@@ -19,7 +21,9 @@ const reducer = combineReducers({
   talentProfile,
   skills,
   experience,
-  portofolio
+  portofolio,
+  talent,
+  recruiter
 })
 
 export default reducer
