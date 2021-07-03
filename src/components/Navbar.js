@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { authLogout } from '../redux/actions/auth'
+import { profileRecruiter } from '../redux/actions/recruiter'
+import { getTalentProfile } from '../redux/actions/profileTalent'
 
 const RightComponent = connect((state) => ({ auth: state.auth }), { authLogout })(({ auth, authLogout: logout }) => {
   if (auth.token !== null) {
@@ -21,18 +23,25 @@ const RightComponent = connect((state) => ({ auth: state.auth }), { authLogout }
 })
 
 class Navbar extends Component {
-  goToHome = () => {
-    this.props.history.push('/home')
+  componentDidMount () {
+    if (this.props.auth.userData.role === 'talent') {
+      this.props.getTalentProfile(this.props.auth.userData.id)
+    } else if (this.props.auth.userData.role === 'recruiter') {
+      this.props.profileRecruiter(this.props.auth.userData.id)
+    } else {
+      console.log('Guest')
+    }
   }
 
   render () {
+    console.log(this.props.auth)
     const { token } = this.props.auth
     return (
       <nav className="bg-white">
             <div className="flex flex-row mx-28 py-6 justify-between">
 
             <div className=" font-semibold">
-              <img onClick={this.goToHome} className="" src="/assets/logo2.png" alt="logo"></img>
+              <img className="" src="/assets/logo2.png" alt="logo"></img>
             </div>
 
             <div className="space-x-4">
@@ -43,7 +52,12 @@ class Navbar extends Component {
                   <div className="flex justify-between space-x-7">
                     <i className="fa fa-bell-o my-auto text-gray-400 font-bold" aria-hidden="true"></i>
                     <i className="fa fa-envelope-o my-auto font-bold text-gray-400 " aria-hidden="true"></i>
-                    <div className="my-auto"><img className="rounded-full" src="/assets/peoplenav.png" /></div>
+                    {/* <div className="my-auto"><img className="rounded-full" src="/assets/peoplenav.png" /></div> */}
+                    {this.props.auth.userData.role === 'talent'
+                      ? <Link to={`/profile/talent/${this.props.auth.userData.id}`}><div className="my-auto "><img className="mt-2 rounded-full h-8 w-8" src={`http://localhost:8880/upload/${this.props.talentProfile.talentProfile.picture}`} /></div></Link>
+                      : <Link to={'/profile/recruiter'}><div className="my-auto"><img className="rounded-full mt-2 rounded-full h-8 w-8" src={`http://localhost:8880/upload/${this.props.recruiter.data.picture}`} /></div></Link>
+                    }
+
                     <RightComponent />
                   </div>
 
@@ -64,8 +78,12 @@ class Navbar extends Component {
 }
 
 const mapStateToProps = state => ({
-  auth: state.auth
+  auth: state.auth,
+  talentProfile: state.talentProfile,
+  recruiter: state.recruiter
 
 })
 
-export default connect(mapStateToProps)(Navbar)
+const mapDispatchToProps = { profileRecruiter, getTalentProfile }
+
+export default connect(mapStateToProps, mapDispatchToProps)(Navbar)

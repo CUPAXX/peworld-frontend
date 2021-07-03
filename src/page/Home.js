@@ -14,7 +14,7 @@ const Home = (props) => {
 
   return (
       <React.Fragment>
-        <Navbar history={this.props.history}/>
+        <Navbar />
         <section>
           <div className="bg-purple-700 ">
             <h2 className="text-white font-bold text-lg py-5 ml-28">Top Jobs</h2>
