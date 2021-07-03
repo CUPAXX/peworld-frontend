@@ -60,12 +60,12 @@ export const authRegisterRecruiter = (data) => {
     try {
       const { data } = await http().post(`${URL}/auth/register/recruiter`, form.toString())
       dispatch({
-        type: 'AUTH_REGISTER_TALENT',
+        type: 'AUTH_REGISTER_RECRUITER',
         payload: data.data.registered
       })
     } catch (err) {
       dispatch({
-        type: 'AUTH_REGISTER_TALENT_FAILED',
+        type: 'AUTH_REGISTER_RECRUITER_FAILED',
         payload: err.response.data.data
       })
     }

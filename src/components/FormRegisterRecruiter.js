@@ -3,12 +3,16 @@ import { Link } from 'react-router-dom'
 
 class FormRegisterRecruiter extends Component {
   render () {
-    const { fullName, email, phoneNumber, password, confirmPassword, company, sector, changeFullName, changeEmail, changePhoneNumber, changePassword, changeConfirmPassword, changeCompany, changeSector, onRegister } = this.props
+    const { msg, fullName, email, phoneNumber, password, confirmPassword, company, sector, changeFullName, changeEmail, changePhoneNumber, changePassword, changeConfirmPassword, changeCompany, changeSector, onRegister } = this.props
     return (
       <React.Fragment>
         <div className="flex flex-col my-24 mr-12">
           <h2 className="text-3xl font-semibold text-gray-800">Halo, Pewpeople</h2>
           <h2 className="text-gray-700 mt-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. In euismod ipsum et duirhoncus auctor.</h2>
+          {msg !== ''
+            ? msg !== 'success register recruiter!' && <div className='bg-red-300 text-red-600 font-bold w-full mt-5 px-2 py-5'>{msg}</div>
+            : <></>
+          }
           <form onSubmit={onRegister} className="flex flex-col mt-10">
             <label className="text-sm text-gray-500">Nama Lengkap</label>
             <input value={fullName} onChange={changeFullName} className="text-sm py-3 px-3 border-gray-200 border-2 rounded text-gray-600" type="text" placeholder="Masukan Nama Lengkap"></input>

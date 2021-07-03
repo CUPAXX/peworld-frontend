@@ -53,26 +53,23 @@ class RegisterTalent extends Component {
       ...this.state
     }
     this.props.authRegisterTalent(data)
-      .then(() => {
-        this.props.history.push('/login')
-      })
   }
 
-  // componentDidUpdate () {
-  //   const { msg } = this.props.auth
-  //   if (msg !== '') {
-  //     this.props.history.push('/login')
-  //   }
-  // }
+  componentDidUpdate () {
+    const { msg } = this.props.auth
+    if (msg === 'success register talent!') {
+      this.props.history.push('/login')
+    }
+  }
 
   render () {
     const { fullName, email, phoneNumber, password, confirmPassword } = this.state
+    const { msg } = this.props.auth
     return (
       <React.Fragment>
-        <section className="flex flex-row  bg-gray-100">
-
+        <section className="flex flex-row h-auto bg-gray-100">
           <ImageRegister />
-          <FormRegisterTalent fullName={fullName} email={email} phoneNumber={phoneNumber} password={password} confirmPassword={confirmPassword} changeFullName={this.changeFullName} changeEmail={this.changeEmail} changePhoneNumber={this.changePhoneNumber} changePassword={this.changePassword} changeConfirmPassword={this.changeConfirmPassword} onRegister={this.onRegister}/>
+          <FormRegisterTalent msg={msg} fullName={fullName} email={email} phoneNumber={phoneNumber} password={password} confirmPassword={confirmPassword} changeFullName={this.changeFullName} changeEmail={this.changeEmail} changePhoneNumber={this.changePhoneNumber} changePassword={this.changePassword} changeConfirmPassword={this.changeConfirmPassword} onRegister={this.onRegister}/>
         </section>
       </React.Fragment>
     );

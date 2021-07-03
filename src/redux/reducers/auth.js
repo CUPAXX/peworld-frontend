@@ -2,7 +2,6 @@ const initialState = {
   token: null,
   userData: [],
   msg: '',
-  errMsg: '',
   registered: ''
 }
 
@@ -13,42 +12,39 @@ const auth = (state = initialState, action) => {
         ...state,
         token: action.payload.token,
         userData: action.payload.userData,
-        msg: 'success login!',
-        errMsg: ''
+        msg: 'success login!'
       }
     }
     case 'AUTH_LOGIN_FAILED': {
       return {
         ...state,
-        errMsg: action.payload
+        msg: action.payload
       }
     }
     case 'AUTH_REGISTER_TALENT': {
       return {
         ...state,
         registered: action.payload,
-        msg: 'success register talent!',
-        errMsg: ''
+        msg: 'success register talent!'
       }
     }
     case 'AUTH_REGISTER_TALENT_FAILED': {
       return {
         ...state,
-        errMsg: action.payload
+        msg: action.payload
       }
     }
     case 'AUTH_REGISTER_RECRUITER': {
       return {
         ...state,
         registered: action.payload,
-        msg: 'success register recruiter!',
-        errMsg: ''
+        msg: 'success register recruiter!'
       }
     }
     case 'AUTH_REGISTER_RECRUITER_FAILED': {
       return {
         ...state,
-        errMsg: action.payload
+        msg: action.payload
       }
     }
     case 'AUTH_LOGOUT': {
@@ -57,7 +53,6 @@ const auth = (state = initialState, action) => {
         token: null,
         userData: [],
         msg: '',
-        errMsg: '',
         registered: ''
       }
     }
