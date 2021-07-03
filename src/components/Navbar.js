@@ -9,7 +9,7 @@ const RightComponent = connect((state) => ({ auth: state.auth }), { authLogout }
   if (auth.token !== null) {
     return (
           <div>
-              <button onClick={logout} type="button" className="mt-1 rounded-lg bg-purple-600 font-medium text-white hover:bg-purple-500 px-5 py-2"> Logout </button>
+              <button onClick={logout} type="button" className="mt-1 rounded-lg bg-purple-600 font-medium text-white hover:bg-purple-500 px-5 py-2"><Link to='/'> Logout </Link></button>
           </div>
     );
   }
