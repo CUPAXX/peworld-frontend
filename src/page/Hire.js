@@ -7,7 +7,7 @@ class Hire extends Component {
   render () {
     return (
       <React.Fragment>
-        <Navbar/>
+        <Navbar history={this.props.history}/>
         <section>
         <div className="flex mt-14 mx-32 mb-64">
             <div>
