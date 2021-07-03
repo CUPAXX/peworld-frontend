@@ -55,9 +55,9 @@ class ProfileTalent extends Component {
                 ? <></>
                 : <Link to={`/hire/${this.props.match.params.id}`}><button className="bg-purple-700 text-white font-semibold py-3 w-full rounded-sm mb-8">Hire</button></Link>
               }
-              { this.props.auth.userData.id === this.props.match.params.id
-                ? <></>
-                : <Link to={'/editProfileTalent/'}><button className="bg-purple-700 text-white font-semibold py-3 w-full rounded-sm mb-8">Edit Profile</button></Link>
+              { this.props.auth.userData.id === parseInt(this.props.match.params.id)
+                ? <Link to={'/editProfileTalent/'}><button className="bg-purple-700 text-white font-semibold py-3 w-full rounded-sm mb-8">Edit Profile</button></Link>
+                : <></>
               }
               <h2 className="font-semibold text-lg pb-5">Skill</h2>
               <div className="grid grid-cols-3 gap-y-2 gap-x-2">
