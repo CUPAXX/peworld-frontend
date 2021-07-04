@@ -117,6 +117,7 @@ class Hire extends Component {
 
               <label className="text-sm text-gray-500 mt-8">Tujuan tentang pesan ini</label>
               <select value={this.state.idMessage} onChange={e => this.setState({ idMessage: e.target.value })} className="text-sm py-3 px-3 border-gray-200 border-2 rounded text-gray-600" type="text" placeholder="Masukan Nama Perusahaan">
+                <option selected>Select Message!</option>
                 <option value="1" >Project</option>
                 <option value="2">Employee</option>
               </select>

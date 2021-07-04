@@ -64,7 +64,7 @@ class App extends React.Component {
             <Route path="/profile/talent/:id" component={ProfileTalent} />
             <Route path="/editProfileTalent" component={EditProfileTalent} />
             <Route path="/editProfileRecruiter/:id" component={EditProfileRecruiter} />
-            <Route path="/hire" component={Hire} />
+            <Route path="/hire/:id" component={Hire} />
             <Route path="/home" component={Home} />
           </PrivateRoute>
 
