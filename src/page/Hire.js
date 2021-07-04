@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import picProfile from '../bg/profile.png'
+import Swal from 'sweetalert2'
 import Footer from '../components/Footer'
 import Navbar from '../components/Navbar'
 import { getTalentProfile } from '../redux/actions/profileTalent'
@@ -52,6 +53,16 @@ class Hire extends Component {
     console.log(idMessage);
     const data = { idMessage, companyName, email, phoneNumber, description }
     this.props.CreateHire(data, token, id)
+      .then(() => {
+        Swal.fire({
+          position: 'center',
+          icon: 'success',
+          title: 'Success hire talent',
+          showConfirmButton: false,
+          timer: 2000,
+          iconColor: '#7F3FBF'
+        });
+      })
   }
 
   state ={

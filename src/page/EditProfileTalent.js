@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import Footer from '../components/Footer'
 import Navbar from '../components/Navbar'
 import Profile from '../components/Profile'
+import Swal from 'sweetalert2'
 
 import { connect } from 'react-redux'
 import { addSkills } from '../redux/actions/skills'
@@ -129,6 +130,16 @@ class EditProfileTalent extends Component {
       description
     }
     this.props.updateTalent(data, token)
+      .then(() => {
+        Swal.fire({
+          position: 'center',
+          icon: 'success',
+          title: 'Success edit profile',
+          showConfirmButton: false,
+          timer: 2000,
+          iconColor: '#7F3FBF'
+        });
+      })
   }
 
   updateTalentPicture = () => {
@@ -153,6 +164,8 @@ class EditProfileTalent extends Component {
   }
 
   render () {
+    const { talentProfile } = this.props?.talentProfile
+    console.log(talentProfile)
     const { REACT_APP_BASE_URL: URL } = process.env
     return (
       <React.Fragment>
@@ -173,10 +186,10 @@ class EditProfileTalent extends Component {
                 <span className="font-semibold text-sm text-gray-500 pt-4"><i className="fa fa-pencil pr-2"></i>Edit</span>
               </label>
               <button onClick={this.updateTalentPicture} className="bg-purple-700 text-white font-semibold py-3 hover:bg-purple-500">Save</button>
-              <h2 className="font-semibold text-lg text-gray-700 pb-2 pt-5">Louis Tomlinson</h2>
-              <h2 className="text-sm text-gray-800 pb-3">Web Developer</h2>
-              <h2 className="text-sm text-gray-500 pb-3"><i className="fa fa-map-marker pr-2 text-lg"></i>Purwokerto, Jawa Tengah</h2>
-              <h2 className="text-sm text-gray-500 pb-3">Freelancer</h2>
+              <h2 className="font-semibold text-lg text-gray-700 pb-2 pt-5">{talentProfile?.full_name}</h2>
+              <h2 className="text-sm text-gray-800 pb-3">{talentProfile?.job_desk}</h2>
+              <h2 className="text-sm text-gray-500 pb-3"><i className="fa fa-map-marker pr-2 text-lg"></i>{talentProfile?.address}</h2>
+              <h2 className="text-sm text-gray-500 pb-3">{talentProfile?.job_type}</h2>
 
             </div>
 
@@ -190,7 +203,7 @@ class EditProfileTalent extends Component {
           <div className="w-2/3">
 
             <div className="flex flex-col bg-white rounded-md  divide-y px-8 py-8">
-              <h2 className="font-semibold text-lg text-gray-700 pb-2 ">Louis Tomlinson</h2>
+              <h2 className="font-semibold text-lg text-gray-700 pb-2 ">{talentProfile?.full_name}</h2>
               <label className="text-gray-500 text-sm pt-8" >Nama lengkap</label>
               <input value={this.state.fullName} onChange={(e) => this.setState({ fullName: e.target.value })} className="border shadow  py-3 px-3 rounded text-gray-600  text-sm" type="text" placeholder="Masukan Nama lengkap" />
 
