@@ -36,11 +36,10 @@ export const updateTalent = (data, token) => async (dispatch) => {
 };
 
 export const updateTalentPicture = (picture, token) => async (dispatch) => {
-  console.log(token, picture);
   // eslint-disable-next-line no-undef
   const form = new FormData();
   form.append('picture', picture[0]);
-  console.log(form.get('picture'), 'coba');
+
   try {
     const { data } = await http(token).patch(`${URL}/user/talent/picture`, form);
     dispatch({
