@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import picProfile from '../bg/profile.png'
 import Navbar from '../components/Navbar'
-import { Link, useHistory } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 import Footer from '../components/Footer'
 
