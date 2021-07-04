@@ -1,5 +1,7 @@
 const initialState = {
-  talentProfile: {}
+  talentProfile: {},
+  dataPicture: [],
+  msg: ''
 }
 
 const talentProfile = (state = initialState, action) => {
@@ -9,6 +11,32 @@ const talentProfile = (state = initialState, action) => {
         ...state,
         talentProfile: action.payload
       }
+    }
+    case 'UPDATE_TALENT': {
+      return {
+        ...state,
+        msg: action.payload
+      };
+    }
+    case 'UPDATE_TALENT_FAILED': {
+      return {
+        ...state,
+        msg: action.payload
+      };
+    }
+    case 'UPDATE_TALENT_PICTURE': {
+      return {
+        ...state,
+        msg: 'success update profile picture!',
+        dataPicture: action.payload
+      };
+    }
+    case 'UPDATE_TALENT_PICTURE_FAILED': {
+      return {
+        ...state,
+        msg: action.payload,
+        dataPicture: []
+      };
     }
     default : {
       return {

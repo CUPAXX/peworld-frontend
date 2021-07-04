@@ -34,7 +34,6 @@ class Navbar extends Component {
   }
 
   render () {
-    console.log(this.props.auth)
     const { token } = this.props.auth
     return (
       <nav className="bg-white">
@@ -55,7 +54,7 @@ class Navbar extends Component {
                     {/* <div className="my-auto"><img className="rounded-full" src="/assets/peoplenav.png" /></div> */}
                     {this.props.auth.userData.role === 'talent'
                       ? <Link to={`/profile/talent/${this.props.auth.userData.id}`}><div className="my-auto "><img className="mt-2 rounded-full h-8 w-8" src={`http://localhost:8880/upload/${this.props.talentProfile.talentProfile.picture}`} /></div></Link>
-                      : <Link to={'/profile/recruiter'}><div className="my-auto"><img className="rounded-full mt-2 rounded-full h-8 w-8" src={`http://localhost:8880/upload/${this.props.recruiter.data.picture}`} /></div></Link>
+                      : <Link to={'/profile/recruiter'}><div className="my-auto"><img className="mt-2 rounded-full h-8 w-8" src={`http://localhost:8880/upload/${this.props.recruiter.data.picture}`} /></div></Link>
                     }
 
                     <RightComponent />

@@ -10,3 +10,26 @@ export const getExperience = (id) => {
     })
   }
 }
+
+export const addExperience = (data, token) => async (dispatch) => {
+  console.log(token);
+  const form = new URLSearchParams();
+  form.append('position', data.position);
+  form.append('company_name', data.companyName);
+  form.append('start_join', data.startJoin);
+  form.append('end', data.end);
+  form.append('description', data.descriptionExperience);
+  console.log(form.toString());
+  try {
+    const { data } = await http(token).post(`${URL}/user/talent/experience`, form.toString());
+    dispatch({
+      type: 'ADD_EXPERIENCE',
+      payload: data.data
+    });
+  } catch (err) {
+    dispatch({
+      type: 'ADD_EXPERIENCE_FAILED',
+      payload: err.response.data.data
+    });
+  }
+};
