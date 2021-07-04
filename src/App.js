@@ -31,7 +31,7 @@ function App () {
           <Route path="/register" exact component={PickerRegister} />
 
           <Route path="/editProfileTalent" component={EditProfileTalent} />
-          <Route path="/editProfileRecruiter" component={EditProfileRecruiter} />
+          <Route path="/editProfileRecruiter/:id" component={EditProfileRecruiter} />
           <Route path="/home" component={Home} />
           <Route path="/profile/talent" component={ProfileTalent} />
           <Route path="/hire" component={Hire} />
