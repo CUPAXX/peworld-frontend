@@ -5,7 +5,9 @@ import Navbar from '../components/Navbar'
 import Profile from '../components/Profile'
 
 import { connect } from 'react-redux'
+import { addSkills } from '../redux/actions/skills'
 import { addExperience } from '../redux/actions/getExperience'
+import { addPortofolio } from '../redux/actions/getPortofolio'
 import { updateTalent, getTalentProfile, updateTalentPicture } from '../redux/actions/profileTalent'
 
 class EditProfileTalent extends Component {
@@ -18,28 +20,77 @@ class EditProfileTalent extends Component {
       jobType: '',
       address: '',
       description: '',
+
       picture: '',
       showPicture: '',
       position: '',
       companyName: '',
       startJoin: '',
       end: '',
-      descriptionExperience: ''
+      descriptionExperience: '',
+
+      appName: '',
+      linkRepo: '',
+      type: '',
+      picturePortofolio: '',
+
+      skillList: [
+        {
+          id: 1,
+          skill: 'javascript'
+        },
+        {
+          id: 2,
+          skill: 'Java'
+        },
+        {
+          id: 3,
+          skill: 'Python'
+        },
+        {
+          id: 4,
+          skill: 'C#'
+        },
+        {
+          id: 5,
+          skill: 'PHP'
+        },
+        {
+          id: 6,
+          skill: 'Golang'
+        },
+        {
+          id: 7,
+          skill: 'Kotlin'
+        },
+        {
+          id: 8,
+          skill: 'Laravel'
+        },
+        {
+          id: 9,
+          skill: 'CSS'
+        },
+        {
+          id: 10,
+          skill: 'HTML'
+        }
+      ],
+      skillName: []
     }
   }
 
-  // stateSet = () => {
-  //   getTalentProfile(this.props.auth.userData.id)
-  //   this.setState({
-  //     fullName: this.props.talentProfile.talentProfile.full_name,
-  //     jobDesk: this.props.talentProfile.talentProfile.job_desk,
-  //     jobType: this.props.talentProfile.talentProfile.job_type,
-  //     address: this.props.talentProfile.talentProfile.address,
-  //     company: this.props.talentProfile.talentProfile.company,
-  //     description: this.props.talentProfile.talentProfile.description,
-  //     showPicture: this.props.talentProfile.talentProfile.picture
-  //   })
-  // }
+  basketSkill = (name) => {
+    this.setState({
+      skillName: [...this.state.skillName, name]
+    })
+  }
+
+  addSkill = () => {
+    const { token } = this.props.auth
+    const { skillName } = this.state
+    this.props.addSkills(skillName, token);
+  }
 
   addExperience = () => {
     const { token } = this.props.auth
@@ -52,6 +103,18 @@ class EditProfileTalent extends Component {
       descriptionExperience
     }
     this.props.addExperience(data, token)
+  }
+
+  addPortofolio = () => {
+    const { token } = this.props.auth
+    const { appName, linkRepo, type, picturePortofolio } = this.state
+    const data = {
+      appName,
+      linkRepo,
+      type,
+      picturePortofolio
+    }
+    this.props.addPortofolio(data, token)
   }
 
   updateTalent = () => {
@@ -90,6 +153,7 @@ class EditProfileTalent extends Component {
   }
 
   render () {
+    const { REACT_APP_BASE_URL: URL } = process.env
     return (
       <React.Fragment>
         <Navbar />
@@ -100,10 +164,10 @@ class EditProfileTalent extends Component {
         <div className="flex flex-row -mt-56 mx-32 mb-64 space-x-7">
 
           {/* <Profile/> */}
-          <div className="w-96">
+          <div className="w-1/3">
 
             <div className="flex flex-col bg-white  rounded-md px-8 py-8">
-              <img className="h-32 w-32 mx-auto rounded-full" src={`http://localhost:8880/upload/${this.state.showPicture}`}></img>
+              <img className="h-32 w-32 mx-auto rounded-full" src={`${URL}/upload/${this.state.showPicture}`}></img>
               <input name='picture' onChange={(e) => this.setState({ picture: e.target.files })} type="file" accept="image/x-png,image/gif,image/jpeg" id="icon-button-file" className="absolute" style={{ display: 'none' }} />
               <label className="flex justify-center items-center" htmlFor="icon-button-file">
                 <span className="font-semibold text-sm text-gray-500 pt-4"><i className="fa fa-pencil pr-2"></i>Edit</span>
@@ -123,7 +187,7 @@ class EditProfileTalent extends Component {
 
           </div>
 
-          <div className="w-full">
+          <div className="w-2/3">
 
             <div className="flex flex-col bg-white rounded-md  divide-y px-8 py-8">
               <h2 className="font-semibold text-lg text-gray-700 pb-2 ">Louis Tomlinson</h2>
@@ -146,12 +210,21 @@ class EditProfileTalent extends Component {
               <input value={this.state.description} onChange={(e) => this.setState({ description: e.target.value })} className=" border shadow  pb-32 pt-3 px-3 rounded text-gray-600 text-sm" type="text" placeholder="Tuliskan deskripsi singkat" />
             </div>
 
-            <div className="flex flex-col bg-white rounded-md  divide-y mt-8 px-8 py-8 space-y-4">
-              <div className="font-semibold text-lg text-gray-700  ">Skill</div>
+            {this.props.skills.msg === 'skills added' && <div className="flex flex-col bg-purple-400 text-purple-800 font-bold rounded-md mt-8 py-4 px-4">
+              {this.props.skills.msg}!
+            </div>}
 
-              <div className="flex flex-row pt-8 space-x-8">
-                <input className="border shadow w-full py-3 px-3 rounded text-gray-600  text-sm " type="text" placeholder="Masukan Nama lengkap" />
-                <button className="py-4 w-28 font-bold hover:bg-yellow-400 bg-yellow-500 rounded text-white">Simpan</button>
+            <div className="flex flex-col bg-white rounded-md  divide-y mt-8 px-8 py-8">
+              <div className="font-semibold text-lg text-gray-700 ">Skill</div>
+
+              <div className="flex flex-col pt-4 h-auto">
+                <div className="border shadow w-full h-12 py-3 px-3 rounded text-gray-600 text-sm font-bold">{this.state.skillName.map(d => d + ' ')}</div>
+                <div className="flex flex-row flex-wrap items-center h-auto ml-0 py-4 w-full">
+                  {this.state.skillList.map((d) => (
+                    <button key={d.id} onClick={() => this.basketSkill(d.skill)} className="py-1 m-1 w-24 font-bold focus:bg-yellow-600 hover:bg-yellow-400 bg-yellow-500 rounded text-white">{d.skill}</button>
+                  ))}
+                </div>
+                <button onClick={this.addSkill} className="py-4 rounded-md font-bold hover:bg-yellow-400 bg-yellow-500 w-28 text-white">Simpan</button>
               </div>
             </div >
 
@@ -199,6 +272,10 @@ class EditProfileTalent extends Component {
 
             </div>
 
+            {this.props.portofolio.msg === 'add portofolio success!' && <div className="flex flex-col bg-purple-400 text-purple-800 font-bold rounded-md mt-8 py-4 px-4">
+              {this.props.portofolio.msg}
+            </div>}
+
             <div className="flex flex-col bg-white rounded-md   px-8 py-8 mt-8 divide-y space-y-2">
               <h2 className="font-semibold text-lg text-gray-700 pb-2 ">Portofolio</h2>
 
@@ -206,34 +283,37 @@ class EditProfileTalent extends Component {
 
                 <div className="flex flex-col">
                   <label className="text-gray-500 text-sm pt-8" >Nama aplikasi</label>
-                  <input className="border shadow  py-3 px-3 rounded text-gray-600  text-sm" type="text" placeholder="Masukan nama aplikasi" />
+                  <input value={this.state.appName} onChange={(e) => this.setState({ appName: e.target.value })} className="border shadow  py-3 px-3 rounded text-gray-600  text-sm" type="text" placeholder="Masukan nama aplikasi" />
 
                   <label className="text-gray-500 text-sm pt-8" >Link repository</label>
-                  <input className="border shadow  py-3 px-3 rounded text-gray-600  text-sm" type="text" placeholder="Masukan link repository" />
+                  <input value={this.state.linkRepo} onChange={(e) => this.setState({ linkRepo: e.target.value })} className="border shadow  py-3 px-3 rounded text-gray-600  text-sm" type="text" placeholder="Masukan link repository" />
                 </div>
 
                 <div className="text-gray-500 text-sm pt-8" >Type portofolio</div>
                 <div className="flex flex-row space-x-5">
                   <div className="flex flex-1 flex-row border shadow rounded">
-                    <input className=" border-2 my-auto mx-4" type="radio" />
-                    <label className="my-auto text-gray-500 text-sm py-4" >Aplikasi mobile</label>
+                    <input value="web" onChange={(e) => this.setState({ type: e.target.value })} className="border-2 my-auto mx-4" name="type" type="radio" />
+                    <label className="my-auto text-gray-500 text-sm py-4" >Aplikasi web</label>
                   </div>
 
                   <div className="flex flex-1 flex-row  border shadow rounded">
-                    <input className=" border-2 my-auto mx-4" type="radio" />
+                    <input value="mobile" onChange={(e) => this.setState({ type: e.target.value })} className="border-2 my-auto mx-4" name="type" type="radio" />
                     <label className="my-auto text-gray-500 text-sm py-4" >Aplikasi mobile</label>
                   </div>
                 </div>
 
                 <div className="flex flex-col mb-4 ">
                   <label className="text-gray-500 text-sm pt-8" >Upload gambar</label>
-                  <div className=" border-4 border-dashed   py-20 text-center rounded text-gray-600 text-sm" >Drag & Drop untuk Upload Gambar Aplikasi Mobile</div>
+                  <input name='picture' onChange={(e) => this.setState({ picturePortofolio: e.target.files })} type="file" accept="image/x-png,image/gif,image/jpeg" id="icon-button-picture" className="absolute" style={{ display: 'none' }} />
+                  <label className="flex justify-center items-center" htmlFor="icon-button-picture">
+                    <div className=" border-4 border-dashed w-full cursor-pointer py-20 text-center rounded text-gray-600 text-sm" >Upload Gambar Aplikasi Mobile</div>
+                  </label>
                 </div>
 
               </div>
 
               <div className="pt-8">
-                <button className="bg-white text-yellow-500 font-semibold py-3 hover:bg-yellow-200 border  border-yellow-500   w-full rounded-md">Tambah portofolio</button>
+                <button onClick={this.addPortofolio} className="bg-white text-yellow-500 font-semibold py-3 hover:bg-yellow-200 border  border-yellow-500   w-full rounded-md">Tambah portofolio</button>
               </div>
 
             </div>
@@ -251,14 +331,18 @@ class EditProfileTalent extends Component {
 const mapStateToProps = state => ({
   auth: state.auth,
   experience: state.experience,
-  talentProfile: state.talentProfile
+  portofolio: state.portofolio,
+  talentProfile: state.talentProfile,
+  skills: state.skills
 })
 
 const mapDispatchToProps = {
   addExperience,
+  addPortofolio,
   updateTalent,
   getTalentProfile,
-  updateTalentPicture
+  updateTalentPicture,
+  addSkills
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(EditProfileTalent)

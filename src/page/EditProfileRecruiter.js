@@ -56,6 +56,7 @@ class EditProfileRecruiter extends Component {
   render () {
     const { data } = this.props?.recruiter
     console.log(this.props.recruiter)
+    const { REACT_APP_BASE_URL: URL } = process.env
     return (
       <React.Fragment>
         <Navbar/>
@@ -68,7 +69,7 @@ class EditProfileRecruiter extends Component {
         <div className="w-96">
 
             <div className="flex flex-col bg-white  rounded-md px-8 py-8">
-              <img className="h-32 w-32 mx-auto rounded-full" src={`http://localhost:8880/upload/${data.picture}`}></img>
+              <img className="h-32 w-32 mx-auto rounded-full" src={`${URL}/upload/${data.picture}`}></img>
 
               <input name='picture' accept="image/*" id="icon-button-file" type="file" onChange={(e) => this.setState({ picture: e.target.files })} className="absolute" style={{ display: 'none' }} />
               <label className="flex justify-center items-center" htmlFor="icon-button-file">
