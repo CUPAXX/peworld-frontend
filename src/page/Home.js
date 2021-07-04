@@ -135,7 +135,7 @@ const Home = (props) => {
                           </div>
                         </div>
                         <div className="flex">
-                          <Link to="/profile/talent"><button className="text-white bg-purple-700 py-3 px-6 rounded-sm mr-16">Lihat Profile</button></Link>
+                          <Link to={`/profile/talent/${data.id_user}`}><button className="text-white bg-purple-700 py-3 px-6 rounded-sm mr-16">Lihat Profile</button></Link>
                         </div>
                       </div>
                       ))
@@ -144,7 +144,7 @@ const Home = (props) => {
                       talent.data.map((data, idx) => (
                       <div key={idx} className="flex flex-row items-center border-b-2 py-5">
                         <div className="mx-5 mb-3">
-                          <img className="w-28 h-28" src={data.picture ? data.picture : picProfile}></img>
+                          <img className="w-28 h-28" src={data.picture ? `${URL}/upload/${data.picture}` : picProfile}></img>
                         </div>
                         <div className="flex flex-col flex-1">
                           <h2 className="font-semibold text-2xl">{data.full_name}</h2>
@@ -162,7 +162,7 @@ const Home = (props) => {
                           </div>
                         </div>
                         <div className="flex">
-                          <Link to="/profile/talent"><button className="text-white bg-purple-700 py-3 px-6 rounded-sm mr-16">Lihat Profile</button></Link>
+                          <Link to={`/profile/talent/${data.id_user}`}><button className="text-white bg-purple-700 py-3 px-6 rounded-sm mr-16">Lihat Profile</button></Link>
                         </div>
                       </div>
                       ))
