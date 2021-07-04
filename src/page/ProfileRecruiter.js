@@ -3,6 +3,7 @@ import picProfile from '../bg/profile.png'
 import Footer from '../components/Footer'
 import Navbar from '../components/Navbar'
 import { connect } from 'react-redux'
+import { Link } from 'react-router-dom'
 import { profileRecruiter } from '../redux/actions/recruiter'
 
 class ProfileRecruiter extends Component {
@@ -31,7 +32,7 @@ class ProfileRecruiter extends Component {
                 </div>
 
               <div className="flex flex-col w-72 items-center">
-                <button className=" py-3 bg-purple-700 px-20 text-white font-semibold rounded mb-8">Edit Profile</button>
+                <Link to={`/editProfileRecruiter/${data.id}`} ><button className=" py-3 bg-purple-700 px-20 text-white font-semibold rounded mb-8">Edit Profile</button></Link>
                 <div className="flex flex-col space-y-3">
                   <h2 className="text-sm text-gray-500 "><i className="fa fa-envelope-o pr-4 text-lg"></i>{data.Email}</h2>
                   <h2 className="text-sm text-gray-500 "><i className="fa fa-instagram pr-4 text-lg"></i>{data.user_instagram}</h2>

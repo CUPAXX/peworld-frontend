@@ -2,6 +2,9 @@ import React, { useState, useEffect } from 'react';
 import picProfile from '../bg/profile.png'
 import Navbar from '../components/Navbar'
 import { Link, useHistory } from 'react-router-dom'
+
+import Footer from '../components/Footer'
+
 import { connect } from 'react-redux';
 import { getTalent, talentSkill } from './../redux/actions/talent';
 import HomePagination from '../components/HomePagination';
@@ -63,7 +66,7 @@ const Home = (props) => {
 
   return (
       <React.Fragment>
-        <Navbar/>
+        <Navbar />
         <section>
           <div className="bg-purple-700 ">
             <h2 className="text-white font-bold text-lg py-5 ml-28">Top Jobs</h2>
@@ -169,6 +172,7 @@ const Home = (props) => {
             </div>
             <HomePagination searchData={props.talent.searchData} numbers={num} search={search}/>
         </section>
+        <Footer />
       </React.Fragment>
   );
 };
