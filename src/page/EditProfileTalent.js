@@ -103,7 +103,7 @@ class EditProfileTalent extends Component {
           <div className="w-96">
 
             <div className="flex flex-col bg-white  rounded-md px-8 py-8">
-              <img className="h-32 w-32 mx-auto " src={`http://localhost:8880/upload/${this.state.showPicture}`}></img>
+              <img className="h-32 w-32 mx-auto rounded-full" src={`http://localhost:8880/upload/${this.state.showPicture}`}></img>
               <input name='picture' onChange={(e) => this.setState({ picture: e.target.files })} type="file" accept="image/x-png,image/gif,image/jpeg" id="icon-button-file" className="absolute" style={{ display: 'none' }} />
               <label className="flex justify-center items-center" htmlFor="icon-button-file">
                 <span className="font-semibold text-sm text-gray-500 pt-4"><i className="fa fa-pencil pr-2"></i>Edit</span>
