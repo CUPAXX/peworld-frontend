@@ -10,3 +10,23 @@ export const getSkill = (id) => {
     })
   }
 }
+
+export const addSkills = (skills, token) => async (dispatch) => {
+  console.log(token);
+  const form = new URLSearchParams();
+  skills.map((value) => form.append('skill', value));
+  console.log(form.getAll('skill'));
+  try {
+    const { data } = await http(token).post(`${URL}/user/talent/skill`, form.toString());
+    console.log(data);
+    dispatch({
+      type: 'ADD_SKILL',
+      payload: data.data
+    });
+  } catch (err) {
+    dispatch({
+      type: 'ADD_SKILL_FAILED',
+      payload: err.response.data.data
+    });
+  }
+}

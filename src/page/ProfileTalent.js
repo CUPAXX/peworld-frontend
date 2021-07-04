@@ -45,7 +45,7 @@ class ProfileTalent extends Component {
           <div className="flex z-2 -mt-56 mx-32 mb-64">
             <div>
             <div className="flex flex-col bg-white  rounded-md mr-8 px-8 py-8">
-              <img className="h-32 w-32 mx-auto " src={`${URL}/upload/${data.picture}`}></img>
+              <img className="h-32 w-32 mx-auto rounded-full" src={`${URL}/upload/${data.picture}`}></img>
               <h2 className="font-semibold text-lg text-gray-700 pb-2 pt-5">{data.full_name}</h2>
               <h2 className="text-sm text-gray-800 pb-3">{data.job_desk}</h2>
               <h2 className="text-sm text-gray-500 pb-3"><i className="fa fa-map-marker pr-2 text-lg"></i>{data.address}</h2>

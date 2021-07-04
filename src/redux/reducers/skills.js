@@ -1,5 +1,6 @@
 const initialState = {
-  skills: {}
+  skills: {},
+  msg: ''
 }
 
 const skills = (state = initialState, action) => {
@@ -9,6 +10,18 @@ const skills = (state = initialState, action) => {
         ...state,
         skills: action.payload
       }
+    }
+    case 'ADD_SKILL': {
+      return {
+        ...state,
+        msg: action.payload
+      };
+    }
+    case 'ADD_SKILL_FAILED': {
+      return {
+        ...state,
+        msg: action.payload
+      };
     }
     default : {
       return {
