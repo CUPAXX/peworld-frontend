@@ -55,7 +55,7 @@ class EditProfileRecruiter extends Component {
           timer: 2000,
           iconColor: '#7F3FBF'
         });
-        this.props.history.push('/profile/recruiter')
+        // this.props.history.push('/profile/recruiter')
         // this.props.history.push(`/editProfileRecruiter/${data.id}`)
       })
   }
