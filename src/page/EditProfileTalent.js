@@ -163,7 +163,7 @@ class EditProfileTalent extends Component {
         <div className="flex flex-row -mt-56 mx-32 mb-64 space-x-7">
 
           {/* <Profile/> */}
-          <div className="w-96">
+          <div className="w-1/3">
 
             <div className="flex flex-col bg-white  rounded-md px-8 py-8">
               <img className="h-32 w-32 mx-auto rounded-full" src={`http://localhost:8880/upload/${this.state.showPicture}`}></img>
@@ -186,7 +186,7 @@ class EditProfileTalent extends Component {
 
           </div>
 
-          <div className="w-full">
+          <div className="w-2/3">
 
             <div className="flex flex-col bg-white rounded-md  divide-y px-8 py-8">
               <h2 className="font-semibold text-lg text-gray-700 pb-2 ">Louis Tomlinson</h2>
@@ -216,14 +216,14 @@ class EditProfileTalent extends Component {
             <div className="flex flex-col bg-white rounded-md  divide-y mt-8 px-8 py-8">
               <div className="font-semibold text-lg text-gray-700 ">Skill</div>
 
-              <div className="flex flex-col pt-4 h-44">
+              <div className="flex flex-col pt-4 h-auto">
                 <div className="border shadow w-full h-12 py-3 px-3 rounded text-gray-600 text-sm font-bold">{this.state.skillName.map(d => d + ' ')}</div>
-                <div className="flex flex-row h-auto ml-0 py-4 w-full">
+                <div className="flex flex-row flex-wrap items-center h-auto ml-0 py-4 w-full">
                   {this.state.skillList.map((d) => (
-                    <button key={d.id} onClick={() => this.basketSkill(d.skill)} className="py-2 mx-1 w-24 font-bold focus:bg-yellow-600 hover:bg-yellow-400 bg-yellow-500 rounded text-white">{d.skill}</button>
+                    <button key={d.id} onClick={() => this.basketSkill(d.skill)} className="py-1 m-1 w-24 font-bold focus:bg-yellow-600 hover:bg-yellow-400 bg-yellow-500 rounded text-white">{d.skill}</button>
                   ))}
                 </div>
-                <button onClick={this.addSkill} className="py-4 w-full font-bold hover:bg-yellow-400 bg-yellow-500 rounded text-white">Simpan</button>
+                <button onClick={this.addSkill} className="py-4 rounded-md font-bold hover:bg-yellow-400 bg-yellow-500 w-28 text-white">Simpan</button>
               </div>
             </div >
 
