@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import Footer from '../components/Footer'
 import Navbar from '../components/Navbar'
 import { profileRecruiterUpdate, profileRecruiter, updateRecruiterPicture } from '../redux/actions/recruiter'
+import Swal from 'sweetalert2'
 
 import { connect } from 'react-redux'
 
@@ -45,6 +46,18 @@ class EditProfileRecruiter extends Component {
     const { full_name, Email, phone_number, company, sector, city, description, instagram, linkedin } = this.state
     const data = { full_name, Email, phone_number, company, sector, city, description, instagram, linkedin }
     this.props.profileRecruiterUpdate(data, token)
+      .then(() => {
+        Swal.fire({
+          position: 'center',
+          icon: 'success',
+          title: 'Success edit profile',
+          showConfirmButton: false,
+          timer: 2000,
+          iconColor: '#7F3FBF'
+        });
+        this.props.history.push('/profile/recruiter')
+        // this.props.history.push(`/editProfileRecruiter/${data.id}`)
+      })
   }
 
   data2 = () => {
