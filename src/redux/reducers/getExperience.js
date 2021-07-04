@@ -1,5 +1,7 @@
 const initialState = {
-  experience: {}
+  experience: {},
+  data: [],
+  msg: ''
 }
 
 const experience = (state = initialState, action) => {
@@ -9,6 +11,20 @@ const experience = (state = initialState, action) => {
         ...state,
         experience: action.payload
       }
+    }
+    case 'ADD_EXPERIENCE': {
+      return {
+        ...state,
+        data: action.payload,
+        msg: 'add experience success!'
+      };
+    }
+    case 'ADD_EXPERIENCE_FAILED': {
+      return {
+        ...state,
+        data: [],
+        msg: action.payload
+      };
     }
     default : {
       return {

@@ -2,6 +2,9 @@ import React, { useEffect } from 'react';
 import picProfile from '../bg/profile.png'
 import Navbar from '../components/Navbar'
 import { Link } from 'react-router-dom'
+
+import Footer from '../components/Footer'
+
 import { connect } from 'react-redux';
 import { getTalent } from './../redux/actions/talent';
 
@@ -71,6 +74,7 @@ const Home = (props) => {
             <button className="bg-white w-12 h-12 flex justify-center items-center border-2 border-gray-300 rounded-sm"><i className="fa fa-angle-right text-3xl font-medium text-gray-400"></i></button>
           </div>
         </section>
+        <Footer />
       </React.Fragment>
   );
 }

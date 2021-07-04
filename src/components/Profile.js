@@ -7,7 +7,7 @@ export default class Profile extends Component {
       <div className="w-96">
 
       <div className="flex flex-col bg-white  rounded-md px-8 py-8">
-        <img className="h-32 w-32 mx-auto " src={picProfile}></img>
+        <img className="h-32 w-32 mx-auto " src={`http://localhost:8880/upload/${this.props.picture}`}></img>
         <h2 className="font-semibold text-lg text-gray-700 pb-2 pt-5">Louis Tomlinson</h2>
         <h2 className="text-sm text-gray-800 pb-3">Web Developer</h2>
         <h2 className="text-sm text-gray-500 pb-3"><i className="fa fa-map-marker pr-2 text-lg"></i>Purwokerto, Jawa Tengah</h2>
