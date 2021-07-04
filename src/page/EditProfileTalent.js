@@ -37,19 +37,43 @@ class EditProfileTalent extends Component {
       skillList: [
         {
           id: 1,
-          skill: 'PHP'
+          skill: 'javascript'
         },
         {
           id: 2,
-          skill: 'JS'
+          skill: 'Java'
         },
         {
           id: 3,
-          skill: 'Phyton'
+          skill: 'Python'
         },
         {
           id: 4,
-          skill: 'My SQL'
+          skill: 'C#'
+        },
+        {
+          id: 5,
+          skill: 'PHP'
+        },
+        {
+          id: 6,
+          skill: 'Golang'
+        },
+        {
+          id: 7,
+          skill: 'Kotlin'
+        },
+        {
+          id: 8,
+          skill: 'Laravel'
+        },
+        {
+          id: 9,
+          skill: 'CSS'
+        },
+        {
+          id: 10,
+          skill: 'HTML'
         }
       ],
       skillName: []
