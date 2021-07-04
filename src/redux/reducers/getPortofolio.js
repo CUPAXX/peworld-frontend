@@ -1,5 +1,7 @@
 const initialState = {
-  portofolio: {}
+  portofolio: {},
+  data: [],
+  msg: ''
 }
 
 const portofolio = (state = initialState, action) => {
@@ -9,6 +11,20 @@ const portofolio = (state = initialState, action) => {
         ...state,
         portofolio: action.payload
       }
+    }
+    case 'ADD_PORTOFOLIO': {
+      return {
+        ...state,
+        data: action.payload,
+        msg: 'add portofolio success!'
+      };
+    }
+    case 'ADD_PORTOFOLIO_FAILED': {
+      return {
+        ...state,
+        data: [],
+        msg: action.payload
+      };
     }
     default : {
       return {
