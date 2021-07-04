@@ -1,5 +1,4 @@
 import { http } from '../../helpers/http'
-const FormData = require('form-data');
 
 const { REACT_APP_BASE_URL: URL } = process.env
 
@@ -49,15 +48,21 @@ export const profileRecruiterUpdate = (data, token) => {
   }
 }
 
-export const updateRecruiterPicture = (picture, token) => {
-  return async (dispatch) => {
-    const form = new FormData()
-    form.append = ('picture', picture)
-    console.log(form)
-    const { data2 } = await http(token).patch(`${URL}/user/recruiter/picture`, form)
+export const updateRecruiterPicture = (picture, token) => async (dispatch) => {
+  // eslint-disable-next-line no-undef
+  const form = new FormData()
+  form.append('picture', picture[0])
+
+  try {
+    const { data } = await http(token).patch(`${URL}/user/recruiter/picture`, form)
     dispatch({
       type: 'PROFILE_RECRUITER_UPDATE_PICTURE',
-      payload: data2.data
+      payload: data.data
     })
+  } catch (err) {
+    dispatch({
+      type: 'PROFILE_RECRUITER_UPDATE_PICTURE_FAILED',
+      payload: err.response.data.data
+    });
   }
 }

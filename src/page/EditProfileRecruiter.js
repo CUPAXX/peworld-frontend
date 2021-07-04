@@ -9,7 +9,7 @@ import { connect } from 'react-redux'
 
 class EditProfileRecruiter extends Component {
   state = {
-    picture: null,
+    picture: '',
     Email: '',
     full_name: '',
     company: '',
@@ -23,6 +23,20 @@ class EditProfileRecruiter extends Component {
 
   componentDidMount () {
     this.props.profileRecruiter(this.props.auth.userData.id)
+      .then(() => {
+        this.setState({
+          picture: this.props.recruiter.data.picture,
+          Email: this.props.recruiter.data.Email,
+          full_name: this.props.recruiter.data.full_name,
+          company: this.props.recruiter.data.company,
+          sector: this.props.recruiter.data.sector,
+          phone_number: this.props.recruiter.data.phone_number,
+          city: this.props.recruiter.data.city,
+          description: this.props.recruiter.data.user_description,
+          instagram: this.props.recruiter.data.user_instagram,
+          linkedin: this.props.recruiter.data.user_linkedin
+        })
+      })
   }
 
   data = (e) => {
@@ -31,21 +45,17 @@ class EditProfileRecruiter extends Component {
     const { full_name, Email, phone_number, company, sector, city, description, instagram, linkedin } = this.state
     const data = { full_name, Email, phone_number, company, sector, city, description, instagram, linkedin }
     this.props.profileRecruiterUpdate(data, token)
-
-    // this.props.profileRecruiterUpdate({ full_name, Email, phone_number, company, sector, city, description, instagram, linkedin }, picture, token)
   }
 
-  data2 = (e) => {
-    e.preventDefault()
+  data2 = () => {
     const { token } = this.props.auth
     const { picture } = this.state
-
-    this.props.updateRecruiterPicture({ picture }, token)
+    this.props.updateRecruiterPicture(picture, token)
   }
 
   render () {
     const { data } = this.props?.recruiter
-    // console.log(this.state)
+    console.log(this.props.recruiter)
     return (
       <React.Fragment>
         <Navbar/>
@@ -60,7 +70,7 @@ class EditProfileRecruiter extends Component {
             <div className="flex flex-col bg-white  rounded-md px-8 py-8">
               <img className="h-32 w-32 mx-auto rounded-full" src={`http://localhost:8880/upload/${data.picture}`}></img>
 
-              <input accept="image/*" id="icon-button-file" type="file" onChange={e => this.setState({ picture: e.target.files[0] })} className="absolute" style={{ display: 'none' }} />
+              <input name='picture' accept="image/*" id="icon-button-file" type="file" onChange={(e) => this.setState({ picture: e.target.files })} className="absolute" style={{ display: 'none' }} />
               <label className="flex justify-center items-center" htmlFor="icon-button-file">
               <span className="font-semibold text-sm text-gray-500 pt-4"><i className="fa fa-pencil pr-2"></i>Edit</span>
               </label>
@@ -84,31 +94,31 @@ class EditProfileRecruiter extends Component {
           <div className="flex flex-col bg-white rounded-md  divide-y px-8 py-8">
             <h2 className="font-semibold text-lg text-gray-700 pb-2 ">Data diri</h2>
             <label className="text-gray-500 text-sm pt-8" >Nama Perusahaan</label>
-            <input onChange={e => this.setState({ company: e.target.value })} className="border shadow  py-3 px-3 rounded text-gray-600  text-sm" type="text" placeholder="Masukan nama perusahan" />
+            <input value={this.state.company} onChange={e => this.setState({ company: e.target.value })} className="border shadow  py-3 px-3 rounded text-gray-600  text-sm" type="text" placeholder="Masukan nama perusahan" />
 
             <label className="text-gray-500 text-sm pt-8" >Nama Lengkap</label>
-            <input onChange={e => this.setState({ full_name: e.target.value })} className="border shadow  py-3 px-3 rounded text-gray-600  text-sm" type="text" placeholder="Masukan nama lengkap" />
+            <input value={this.state.full_name} onChange={e => this.setState({ full_name: e.target.value })} className="border shadow  py-3 px-3 rounded text-gray-600  text-sm" type="text" placeholder="Masukan nama lengkap" />
 
             <label className="text-gray-500 text-sm pt-8" >Bidang</label>
-            <input onChange={e => this.setState({ sector: e.target.value })} className=" border shadow  py-3 px-3 rounded text-gray-600 text-sm" type="text" placeholder="Masukan bidang perusahaan ex : Financial" />
+            <input value={this.state.sector} onChange={e => this.setState({ sector: e.target.value })} className=" border shadow  py-3 px-3 rounded text-gray-600 text-sm" type="text" placeholder="Masukan bidang perusahaan ex : Financial" />
 
             <label className="text-gray-500 text-sm pt-8" >Kota</label>
-            <input onChange={e => this.setState({ city: e.target.value })} className=" border shadow   py-3 px-3 rounded text-gray-600 text-sm" type="text" placeholder="Masukan kota" />
+            <input value={this.state.city} onChange={e => this.setState({ city: e.target.value })} className=" border shadow   py-3 px-3 rounded text-gray-600 text-sm" type="text" placeholder="Masukan kota" />
 
             <label className="text-gray-500 text-sm pt-8" >Deskripsi singkat</label>
-            <input onChange={e => this.setState({ description: e.target.value })} className=" border shadow  pb-32 pt-3 px-3 rounded text-gray-600 text-sm" type="text" placeholder="Tuliskan deskripsi singkat" />
+            <input value={this.state.description} onChange={e => this.setState({ description: e.target.value })} className=" border shadow  pb-32 pt-3 px-3 rounded text-gray-600 text-sm" type="text" placeholder="Tuliskan deskripsi singkat" />
 
             <label className="text-gray-500 text-sm pt-8" >Email</label>
-            <input onChange={e => this.setState({ Email: e.target.value })} className=" border shadow   py-3 px-3 rounded text-gray-600 text-sm" type="email" placeholder="Masukan email" />
+            <input value={this.state.Email} onChange={e => this.setState({ Email: e.target.value })} className=" border shadow   py-3 px-3 rounded text-gray-600 text-sm" type="email" placeholder="Masukan email" />
 
             <label className="text-gray-500 text-sm pt-8" >Instagram</label>
-            <input onChange={e => this.setState({ instagram: e.target.value })} className=" border shadow   py-3 px-3 rounded text-gray-600 text-sm" type="text" placeholder="Masukan nama Instagram" />
+            <input value={this.state.instagram} onChange={e => this.setState({ instagram: e.target.value })} className=" border shadow   py-3 px-3 rounded text-gray-600 text-sm" type="text" placeholder="Masukan nama Instagram" />
 
             <label className="text-gray-500 text-sm pt-8" >Nomor Telepon</label>
-            <input onChange={e => this.setState({ phone_number: e.target.value })} className=" border shadow   py-3 px-3 rounded text-gray-600 text-sm" type="text" placeholder="Masukan nomor telepon" />
+            <input value={this.state.phone_number} onChange={e => this.setState({ phone_number: e.target.value })} className=" border shadow   py-3 px-3 rounded text-gray-600 text-sm" type="text" placeholder="Masukan nomor telepon" />
 
             <label className="text-gray-500 text-sm pt-8" >Linkedin</label>
-            <input onChange={e => this.setState({ linkedin: e.target.value })} className=" border shadow   py-3 px-3 rounded text-gray-600 text-sm" type="text" placeholder="Masukan nama Linkedin" />
+            <input value={this.state.linkedin} onChange={e => this.setState({ linkedin: e.target.value })} className=" border shadow   py-3 px-3 rounded text-gray-600 text-sm" type="text" placeholder="Masukan nama Linkedin" />
           </div>
 
           </div>
