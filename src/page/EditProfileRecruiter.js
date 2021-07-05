@@ -118,7 +118,7 @@ class EditProfileRecruiter extends Component {
               <label className="flex justify-center items-center" htmlFor="icon-button-file">
               <span className="font-semibold text-sm text-gray-500 pt-4"><i className="fa fa-pencil pr-2"></i>Edit</span>
               </label>
-              <button className="bg-purple-700 text-white font-semibold py-3 hover:bg-purple-500" onClick={this.data2}>Save</button>
+              <button className="bg-purple-700 rounded-md text-white font-semibold py-3 hover:bg-purple-500" onClick={this.data2}>Save</button>
 
               <h2 className="font-semibold text-lg text-gray-700 py-2">{data.company}</h2>
               <h2 className="text-sm text-gray-800 pb-3">{data.sector}</h2>

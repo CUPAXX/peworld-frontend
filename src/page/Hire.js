@@ -90,7 +90,7 @@ class Hire extends Component {
         <div className="flex mt-14 mx-32 mb-64">
             <div>
             <div className="flex flex-col bg-white  rounded-md mr-8 px-8 py-8">
-            <img className="h-32 w-32 mx-auto " src={`${URL}/upload/${data.picture}`}></img>
+            <img className="h-32 w-32 mx-auto rounded-full" src={`${URL}/upload/${data.picture}`}></img>
               <h2 className="font-semibold text-lg text-gray-700 pb-2 pt-5">{data.full_name}</h2>
               <h2 className="text-sm text-gray-800 pb-3">{data.job_desk}</h2>
               <h2 className="text-sm text-gray-500 pb-3"><i className="fa fa-map-marker pr-2 text-lg"></i>{data.address}</h2>
@@ -112,7 +112,7 @@ class Hire extends Component {
 
             <form onSubmit={this.onHire}>
             <div className="flex flex-col mx-5" style={{ width: '500px' }}>
-              <h2 className="text-3xl font-semibold">Hubungi Lous Tomlinson</h2>
+              <h2 className="text-3xl font-semibold">Hubungi {data.full_name}</h2>
               <h2 className="text-gray-600 my-5">Lorem ipsum dolor sit amet, consectetur adipiscing elit. In euismod ipsum et dui rhoncus auctor.</h2>
 
               <label className="text-sm text-gray-500 mt-8">Tujuan tentang pesan ini</label>
