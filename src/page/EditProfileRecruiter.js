@@ -19,7 +19,8 @@ class EditProfileRecruiter extends Component {
     city: '',
     description: '',
     instagram: '',
-    linkedin: ''
+    linkedin: '',
+    forUpdate: true
   }
 
   componentDidMount () {
@@ -47,6 +48,7 @@ class EditProfileRecruiter extends Component {
     const data = { full_name, Email, phone_number, company, sector, city, description, instagram, linkedin }
     this.props.profileRecruiterUpdate(data, token)
       .then(() => {
+        this.setState({ forUpdate: !this.state.forUpdate })
         Swal.fire({
           position: 'center',
           icon: 'success',
@@ -55,20 +57,48 @@ class EditProfileRecruiter extends Component {
           timer: 2000,
           iconColor: '#7F3FBF'
         });
-        // this.props.history.push('/profile/recruiter')
-        // this.props.history.push(`/editProfileRecruiter/${data.id}`)
       })
+  }
+
+  componentDidUpdate (prevProps, prevState) {
+    if (prevState.forUpdate !== this.state.forUpdate) {
+      this.props.profileRecruiter(this.props.auth.userData.id)
+        .then(() => {
+          this.setState({
+            picture: this.props.recruiter.data.picture,
+            Email: this.props.recruiter.data.Email,
+            full_name: this.props.recruiter.data.full_name,
+            company: this.props.recruiter.data.company,
+            sector: this.props.recruiter.data.sector,
+            phone_number: this.props.recruiter.data.phone_number,
+            city: this.props.recruiter.data.city,
+            description: this.props.recruiter.data.user_description,
+            instagram: this.props.recruiter.data.user_instagram,
+            linkedin: this.props.recruiter.data.user_linkedin
+          })
+        })
+    }
   }
 
   data2 = () => {
     const { token } = this.props.auth
     const { picture } = this.state
     this.props.updateRecruiterPicture(picture, token)
+      .then(() => {
+        this.setState({ forUpdate: !this.state.forUpdate })
+        Swal.fire({
+          position: 'center',
+          icon: 'success',
+          title: 'Success edit profile',
+          showConfirmButton: false,
+          timer: 2000,
+          iconColor: '#7F3FBF'
+        });
+      })
   }
 
   render () {
     const { data } = this.props?.recruiter
-    console.log(this.props.recruiter)
     const { REACT_APP_BASE_URL: URL } = process.env
     return (
       <React.Fragment>

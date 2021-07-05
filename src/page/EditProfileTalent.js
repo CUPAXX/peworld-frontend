@@ -77,7 +77,9 @@ class EditProfileTalent extends Component {
           skill: 'HTML'
         }
       ],
-      skillName: []
+      skillName: [],
+
+      forUpdate: true
     }
   }
 
@@ -131,6 +133,7 @@ class EditProfileTalent extends Component {
     }
     this.props.updateTalent(data, token)
       .then(() => {
+        this.setState({ forUpdate: !this.state.forUpdate })
         Swal.fire({
           position: 'center',
           icon: 'success',
@@ -146,6 +149,17 @@ class EditProfileTalent extends Component {
     const { token } = this.props.auth
     const { picture } = this.state
     this.props.updateTalentPicture(picture, token)
+      .then(() => {
+        this.setState({ forUpdate: !this.state.forUpdate })
+        Swal.fire({
+          position: 'center',
+          icon: 'success',
+          title: 'Success edit photo profile',
+          showConfirmButton: false,
+          timer: 2000,
+          iconColor: '#7F3FBF'
+        });
+      })
   }
 
   componentDidMount () {
@@ -163,9 +177,25 @@ class EditProfileTalent extends Component {
       })
   }
 
+  componentDidUpdate (prevProps, prevState) {
+    if (prevState.forUpdate !== this.state.forUpdate) {
+      this.props.getTalentProfile(this.props.auth.userData.id)
+        .then(() => {
+          this.setState({
+            fullName: this.props.talentProfile.talentProfile.full_name,
+            jobDesk: this.props.talentProfile.talentProfile.job_desk,
+            jobType: this.props.talentProfile.talentProfile.job_type,
+            address: this.props.talentProfile.talentProfile.address,
+            company: this.props.talentProfile.talentProfile.company,
+            description: this.props.talentProfile.talentProfile.description,
+            showPicture: this.props.talentProfile.talentProfile.picture
+          })
+        })
+    }
+  }
+
   render () {
     const { talentProfile } = this.props?.talentProfile
-    console.log(talentProfile)
     const { REACT_APP_BASE_URL: URL } = process.env
     return (
       <React.Fragment>
