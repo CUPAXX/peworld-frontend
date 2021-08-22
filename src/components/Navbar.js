@@ -53,8 +53,8 @@ class Navbar extends Component {
                     <i className="fa fa-envelope-o my-auto font-bold text-gray-400 " aria-hidden="true"></i>
                     {/* <div className="my-auto"><img className="rounded-full" src="/assets/peoplenav.png" /></div> */}
                     {this.props.auth.userData.role === 'talent'
-                      ? <Link to={`/profile/talent/${this.props.auth.userData.id}`}><div className="my-auto "><img className="mt-2 rounded-full h-8 w-8" src={`http://localhost:8880/upload/${this.props.talentProfile.talentProfile.picture}`} /></div></Link>
-                      : <Link to={'/profile/recruiter'}><div className="my-auto"><img className="mt-2 rounded-full h-8 w-8" src={`http://localhost:8880/upload/${this.props.recruiter.data.picture}`} /></div></Link>
+                      ? <Link to={`/profile/talent/${this.props.auth.userData.id}`}><div className="my-auto "><img className="mt-2 rounded-full h-8 w-8" src={`${URL}/upload/${this.props.talentProfile.talentProfile.picture}`} /></div></Link>
+                      : <Link to={'/profile/recruiter'}><div className="my-auto"><img className="mt-2 rounded-full h-8 w-8" src={`${URL}/upload/${this.props.recruiter.data.picture}`} /></div></Link>
                     }
 
                     <RightComponent />

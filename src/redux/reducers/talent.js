@@ -1,8 +1,7 @@
 const initialState = {
   data: [],
-  searchData: [],
-  talentSkill: [],
-  pageInfo: []
+  pageInfo: [],
+  talentSkill: []
 };
 
 const talent = (state = initialState, action) => {
@@ -11,26 +10,6 @@ const talent = (state = initialState, action) => {
       return {
         ...state,
         data: action.payload.talent,
-        pageInfo: action.payload.pageInfo
-      };
-    }
-    case 'GET_TALENT_NEXT': {
-      return {
-        ...state,
-        data: [
-          ...state.data,
-          ...action.payload.talent
-        ],
-        pageInfo: action.payload.pageInfo
-      };
-    }
-    case 'SEARCH_TALENT': {
-      return {
-        ...state,
-        searchData: [
-          ...state.searchData,
-          ...action.payload.talent
-        ],
         pageInfo: action.payload.pageInfo
       };
     }
